@@ -76,7 +76,7 @@ def visual(request):
         for i in range(6):
             plt.text(i, y[i] , y[i], ha="center")
         plt.legend()
-        plt.savefig("/app/static/output.png")
+        plt.savefig("Covid/app/static/output.png")
         plt.close()
         return render(request, 'visual.html', {'globe': globe, 'country': country, 'whole': whole,'val':val,'nc':nc,'tc':tc,'nd':nd,'td':td,'nr':nr,'tr':tr})
     return render(request, 'visual.html')
