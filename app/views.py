@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.conf import settings
 import matplotlib
 matplotlib.use('Agg')
 matplotlib.rc('figure',max_open_warning=0)
@@ -32,7 +31,6 @@ def index(request):
 
 def visual(request):
     if request.POST:
-        value=''+settings.BASE_DIR+'/static/output.png'
         val=request.POST.get('bt')
         if val==" ":
             val="Global"
@@ -78,7 +76,7 @@ def visual(request):
         for i in range(6):
             plt.text(i, y[i] , y[i], ha="center")
         plt.legend()
-        plt.savefig(""+value)
+        plt.savefig("app/static/output.png")
         plt.close()
         return render(request, 'visual.html', {'globe': globe, 'country': country, 'whole': whole,'val':val,'nc':nc,'tc':tc,'nd':nd,'td':td,'nr':nr,'tr':tr})
     return render(request, 'visual.html')
